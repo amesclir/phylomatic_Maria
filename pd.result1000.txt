@@ -1,0 +1,11 @@
+"PD" "SR"
+"LagodeAjo" 1445.7025 10
+"LagoBurgo" 2088.920102 19
+"TurberadelPradell" 1339.535999 8
+"Tramacastilla" 1198.854041 7
+"IbndelasRanas" 914.308976 8
+"LagunadeRoSeco" 1761.577763 14
+"Gador" 2759.507386 25
+"LagoaComprida" 4737.758966 48
+"LaPanera" 1158.443947 6
+"Serranillos" 1205.892879 8

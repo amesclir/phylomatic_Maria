@@ -1,0 +1,81 @@
+---
+title: "phylomatic_Maria"
+author: "Marcial"
+date: "08/01/2017"
+output: html_document
+---
+
+```{r}
+
+#1. LOADING DATA
+
+library(picante)
+library(phytools)
+
+mytree <- read.tree("zanne2014.out3.tree")
+mytree <- read.newick("zanne2014.out3.tree")
+mytree
+mytree <- collapse.singles(mytree)
+plot(mytree, cex = 0.4)
+
+mydata1000 <- read.csv("Matriz para filogenia.csv", header = T, row.names = 1) 
+mydata1000
+
+mytree$tip.label
+setdiff(colnames(mydata1000), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydata1000))
+
+
+phy <- mytree
+comm <- mydata1000
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.result1000 <- pd(comm, phy, include.root = TRUE)
+pd.result1000
+write.table(pd.result1000, file="pd.result1000.txt")
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.result1000 <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.result1000
+write.table(ses.mpd.result1000, file="ses.mpd.result1000.txt")
+
+
+ses.mntd.result1000 <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.result1000
+write.table(ses.mntd.result1000, file="ses.mntd.result1000.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.result1000 <- comdist (comm, phydist)
+comdist.result1000
+write.table(as.matrix(comdist.result1000), file="comdist.result1000.txt")
+
+
+library(cluster)
+comdist.clusters1000 <- hclust(comdist.result1000)
+plot(comdist.clusters1000)
+
+```
+
