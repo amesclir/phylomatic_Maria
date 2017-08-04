@@ -53,6 +53,7 @@ pd.result1000 <- pd(comm, phy, include.root = TRUE)
 pd.result1000
 write.table(pd.result1000, file="pd.result1000.txt")
 
+
 #3.2.2  MPD, MNTD, SES MPD and SES MNT D
 phydist <- cophenetic(phy)
 ses.mpd.result1000 <- ses.mpd(comm, phydist, null.model = "taxa.labels",
