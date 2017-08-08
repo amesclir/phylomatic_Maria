@@ -1,0 +1,12 @@
+"PD" "SR"
+"LagodeAjo" 630.102865 4
+"Corteguero" 2093.892475 18
+"DolinadePolvoredo" 1501.871882 11
+"PuertodeSanIsidro" 1362.684024 11
+"LagoBurg" 1666.730402 12
+"Tramacastilla" 687.043813 4
+"ElPortalet" 1176.179288 6
+"IbondelasRanas" 979.834861 8
+"LagunadeRioSeco" 1597.422254 11
+"Gador" 1829.124775 14
+"LagoaComprida" 2798.068793 27

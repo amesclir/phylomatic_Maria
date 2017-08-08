@@ -1,0 +1,6 @@
+"PD" "SR"
+"LagodeAjo " 1247.526148 7
+"PuertodeLeitariegos" 1354.026953 9
+"DolinadePolvoredo" 1383.786463 9
+"Tramacastilla" 1128.615449 5
+"ElPortalet" 1066.558072 6

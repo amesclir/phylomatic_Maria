@@ -1,0 +1,10 @@
+"PD" "SR"
+"LagodeAjo " 1086.37195 8
+"PuertodeLeitariegos" 1824.764627 15
+"PuertodeSanIsidro" 1742.327982 12
+"LagoBurg" 1114.8783 10
+"Tramacastilla" 602.823265 3
+"ElPortalet" 1203.458888 7
+"IbondelasRanas" 776.448814 6
+"LagunadeRioSeco" 1409.098017 13
+"LagoaComprida" 2047.690759 15

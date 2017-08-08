@@ -1,0 +1,10 @@
+"PD" "SR"
+"LagodeAjo " 805.508934 6
+"Laguillin" 1203.748087 6
+"LagoBurg" 2074.655289 18
+"LaFeixa" 846.619312 6
+"IbondelasRanas" 914.308976 8
+"LagunadeRioSeco" 2028.385491 18
+"Gador" 2551.937199 20
+"LagoaComprida" 4339.142435 45
+"PradodelasZorras" 1310.991151 11

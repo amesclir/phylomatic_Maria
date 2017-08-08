@@ -18,7 +18,7 @@ mytree
 mytree <- collapse.singles(mytree)
 plot(mytree, cex = 0.4)
 
-mydata1000 <- read.csv("Matriz para filogenia.csv", header = T, row.names = 1) 
+mydata1000 <- read.csv("Matriz para filogenia1000.csv", header = T, row.names = 1) 
 mydata1000
 
 mytree$tip.label
@@ -77,6 +77,266 @@ write.table(as.matrix(comdist.result1000), file="comdist.result1000.txt")
 library(cluster)
 comdist.clusters1000 <- hclust(comdist.result1000)
 plot(comdist.clusters1000)
+
+
+#3000 years ago!
+
+mydata3000 <- read.csv("Matriz para filogenia3000.csv", header = T, row.names = 1) 
+mydata3000 <- mydata3000[1:9,1:168]
+mydata3000 
+
+mytree$tip.label
+setdiff(colnames(mydata3000), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydata3000))
+
+
+phy <- mytree
+comm <- mydata3000
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.result3000 <- pd(comm, phy, include.root = TRUE)
+pd.result3000
+write.table(pd.result3000, file="pd.result3000.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.result3000 <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.result3000
+write.table(ses.mpd.result3000, file="ses.mpd.result3000.txt")
+
+
+ses.mntd.result3000 <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.result3000
+write.table(ses.mntd.result3000, file="ses.mntd.result3000.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.result3000 <- comdist (comm, phydist)
+comdist.result3000
+write.table(as.matrix(comdist.result3000), file="comdist.result3000.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clusters3000 <- hclust(comdist.result3000)
+plot(comdist.clusters3000)
+
+
+#6000 years ago!
+
+mydata6000 <- read.csv("Matriz para filogenia6000.csv", header = T, row.names = 1) 
+mydata6000 <- mydata6000[1:11,1:168]
+mydata6000 
+
+mytree$tip.label
+setdiff(colnames(mydata6000), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydata6000))
+
+
+phy <- mytree
+comm <- mydata6000
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.result6000 <- pd(comm, phy, include.root = TRUE)
+pd.result6000
+write.table(pd.result6000, file="pd.result6000.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.result6000 <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.result6000
+write.table(ses.mpd.result6000, file="ses.mpd.result6000.txt")
+
+
+ses.mntd.result6000 <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.result6000
+write.table(ses.mntd.result6000, file="ses.mntd.result6000.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.result6000 <- comdist (comm, phydist)
+comdist.result6000
+write.table(as.matrix(comdist.result6000), file="comdist.result6000.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clusters6000 <- hclust(comdist.result6000)
+plot(comdist.clusters6000)
+
+
+#9000 years ago!
+
+mydata9000 <- read.csv("Matriz para filogenia9000.csv", header = T, row.names = 1) 
+mydata9000 <- mydata9000[1:9,1:168]
+mydata9000 
+
+mytree$tip.label
+setdiff(colnames(mydata9000), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydata9000))
+
+
+phy <- mytree
+comm <- mydata9000
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.result9000 <- pd(comm, phy, include.root = TRUE)
+pd.result9000
+write.table(pd.result9000, file="pd.result9000.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.result9000 <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.result9000
+write.table(ses.mpd.result9000, file="ses.mpd.result9000.txt")
+
+
+ses.mntd.result9000 <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.result9000
+write.table(ses.mntd.result9000, file="ses.mntd.result9000.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.result9000 <- comdist (comm, phydist)
+comdist.result9000
+write.table(as.matrix(comdist.result9000), file="comdist.result9000.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clusters9000 <- hclust(comdist.result9000)
+plot(comdist.clusters9000)
+
+
+#12000 years ago!
+
+mydata12000 <- read.csv("Matriz para filogenia12000.csv", header = T, row.names = 1) 
+mydata12000 <- mydata12000[1:5,1:168]
+mydata12000 
+
+mytree$tip.label
+setdiff(colnames(mydata12000), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydata12000))
+
+
+phy <- mytree
+comm <- mydata12000
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.result12000 <- pd(comm, phy, include.root = TRUE)
+pd.result12000
+write.table(pd.result12000, file="pd.result12000.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.result12000 <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.result12000
+write.table(ses.mpd.result12000, file="ses.mpd.result12000.txt")
+
+
+ses.mntd.result12000 <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.result12000
+write.table(ses.mntd.result12000, file="ses.mntd.result12000.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.result12000 <- comdist (comm, phydist)
+comdist.result12000
+write.table(as.matrix(comdist.result12000), file="comdist.result12000.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clusters12000 <- hclust(comdist.result12000)
+plot(comdist.clusters12000)
 
 ```
 
