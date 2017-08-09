@@ -338,5 +338,331 @@ par(mfrow = c(1, 1))
 comdist.clusters12000 <- hclust(comdist.result12000)
 plot(comdist.clusters12000)
 
+
+#LagodeAjo!
+
+mydataLagodeAjo <- read.csv("Matriz para filogeniaLagodeAjo.csv", header = T, row.names = 1) 
+mydataLagodeAjo <- mydataLagodeAjo[1:7,1:168]
+mydataLagodeAjo 
+
+mytree$tip.label
+setdiff(colnames(mydataLagodeAjo), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydataLagodeAjo))
+
+
+phy <- mytree
+comm <- mydataLagodeAjo
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.resultLagodeAjo <- pd(comm, phy, include.root = TRUE)
+pd.resultLagodeAjo
+write.table(pd.resultLagodeAjo, file="pd.resultLagodeAjo.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.resultLagodeAjo <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.resultLagodeAjo
+write.table(ses.mpd.resultLagodeAjo, file="ses.mpd.resultLagodeAjo.txt")
+
+
+ses.mntd.resultLagodeAjo <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.resultLagodeAjo
+write.table(ses.mntd.resultLagodeAjo, file="ses.mntd.resultLagodeAjo.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.resultLagodeAjo <- comdist (comm, phydist)
+comdist.resultLagodeAjo
+write.table(as.matrix(comdist.resultLagodeAjo), file="comdist.resultLagodeAjo.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clustersLagodeAjo <- hclust(comdist.resultLagodeAjo)
+plot(comdist.clustersLagodeAjo)
+
+
+
+#LagoBurg!
+
+mydataLagoBurg <- read.csv("Matriz para filogeniaLagoBurg.csv", header = T, row.names = 1) 
+mydataLagoBurg <- mydataLagoBurg[1:4,1:168]
+mydataLagoBurg 
+
+mytree$tip.label
+setdiff(colnames(mydataLagoBurg), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydataLagoBurg))
+
+
+phy <- mytree
+comm <- mydataLagoBurg
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.resultLagoBurg <- pd(comm, phy, include.root = TRUE)
+pd.resultLagoBurg
+write.table(pd.resultLagoBurg, file="pd.resultLagoBurg.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.resultLagoBurg <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.resultLagoBurg
+write.table(ses.mpd.resultLagoBurg, file="ses.mpd.resultLagoBurg.txt")
+
+
+ses.mntd.resultLagoBurg <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.resultLagoBurg
+write.table(ses.mntd.resultLagoBurg, file="ses.mntd.resultLagoBurg.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.resultLagoBurg <- comdist (comm, phydist)
+comdist.resultLagoBurg
+write.table(as.matrix(comdist.resultLagoBurg), file="comdist.resultLagoBurg.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clustersLagoBurg <- hclust(comdist.resultLagoBurg)
+plot(comdist.clustersLagoBurg)
+
+#IbondelasRanas!
+
+mydataIbondelasRanas <- read.csv("Matriz para filogeniaIbondelasRanas.csv", header = T, row.names = 1) 
+mydataIbondelasRanas <- mydataIbondelasRanas[1:4,1:168]
+mydataIbondelasRanas 
+
+mytree$tip.label
+setdiff(colnames(mydataIbondelasRanas), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydataIbondelasRanas))
+
+
+phy <- mytree
+comm <- mydataIbondelasRanas
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.resultIbondelasRanas <- pd(comm, phy, include.root = TRUE)
+pd.resultIbondelasRanas
+write.table(pd.resultIbondelasRanas, file="pd.resultIbondelasRanas.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.resultIbondelasRanas <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.resultIbondelasRanas
+write.table(ses.mpd.resultIbondelasRanas, file="ses.mpd.resultIbondelasRanas.txt")
+
+
+ses.mntd.resultIbondelasRanas <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.resultIbondelasRanas
+write.table(ses.mntd.resultIbondelasRanas, file="ses.mntd.resultIbondelasRanas.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.resultIbondelasRanas <- comdist (comm, phydist)
+comdist.resultIbondelasRanas
+write.table(as.matrix(comdist.resultIbondelasRanas), file="comdist.resultIbondelasRanas.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clustersIbondelasRanas <- hclust(comdist.resultIbondelasRanas)
+plot(comdist.clustersIbondelasRanas)
+
+
+#LagunadeRioSeco!
+
+mydataLagunadeRioSeco <- read.csv("Matriz para filogeniaLagunadeRioSeco.csv", header = T, row.names = 1) 
+mydataLagunadeRioSeco <- mydataLagunadeRioSeco[1:4,1:168]
+mydataLagunadeRioSeco 
+
+mytree$tip.label
+setdiff(colnames(mydataLagunadeRioSeco), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydataLagunadeRioSeco))
+
+
+phy <- mytree
+comm <- mydataLagunadeRioSeco
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.resultLagunadeRioSeco <- pd(comm, phy, include.root = TRUE)
+pd.resultLagunadeRioSeco
+write.table(pd.resultLagunadeRioSeco, file="pd.resultLagunadeRioSeco.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.resultLagunadeRioSeco <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.resultLagunadeRioSeco
+write.table(ses.mpd.resultLagunadeRioSeco, file="ses.mpd.resultLagunadeRioSeco.txt")
+
+
+ses.mntd.resultLagunadeRioSeco <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.resultLagunadeRioSeco
+write.table(ses.mntd.resultLagunadeRioSeco, file="ses.mntd.resultLagunadeRioSeco.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.resultLagunadeRioSeco <- comdist (comm, phydist)
+comdist.resultLagunadeRioSeco
+write.table(as.matrix(comdist.resultLagunadeRioSeco), file="comdist.resultLagunadeRioSeco.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clustersLagunadeRioSeco <- hclust(comdist.resultLagunadeRioSeco)
+plot(comdist.clustersLagunadeRioSeco)
+
+
+
+#LagoaComprida!
+
+mydataLagoaComprida <- read.csv("Matriz para filogeniaLagoaComprida.csv", header = T, row.names = 1) 
+mydataLagoaComprida <- mydataLagoaComprida[1:4,1:168]
+mydataLagoaComprida 
+
+mytree$tip.label
+setdiff(colnames(mydataLagoaComprida), mytree$tip.label)
+setdiff(mytree$tip.label, colnames(mydataLagoaComprida))
+
+
+phy <- mytree
+comm <- mydataLagoaComprida
+
+comm <- as.matrix(comm)
+class(comm)
+colnames(comm)
+rownames(comm)
+
+#2. visualizing trees and data
+
+prunedphy <- prune.sample(comm, phy)
+prunedphy
+
+par(mfrow = c(2, 3))
+for (i in row.names(comm))
+{
+plot(prunedphy, show.tip.label = FALSE, main = i)
+tiplabels(tip = which(prunedphy$tip.label %in% names(which(comm[i, ] >
+0))), pch = 19, cex = 0.5)
+}
+
+#3. Community phylogenetic structure
+#3.1 Phylogenetic diversity
+pd.resultLagoaComprida <- pd(comm, phy, include.root = TRUE)
+pd.resultLagoaComprida
+write.table(pd.resultLagoaComprida, file="pd.resultLagoaComprida.txt")
+
+
+#3.2.2  MPD, MNTD, SES MPD and SES MNT D
+phydist <- cophenetic(phy)
+ses.mpd.resultLagoaComprida <- ses.mpd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mpd.resultLagoaComprida
+write.table(ses.mpd.resultLagoaComprida, file="ses.mpd.resultLagoaComprida.txt")
+
+
+ses.mntd.resultLagoaComprida <- ses.mntd(comm, phydist, null.model = "taxa.labels",
+abundance.weighted = T, runs = 99)
+ses.mntd.resultLagoaComprida
+write.table(ses.mntd.resultLagoaComprida, file="ses.mntd.resultLagoaComprida.txt")
+
+#4.3 Phylogenetic beta diversity
+
+comdist.resultLagoaComprida <- comdist (comm, phydist)
+comdist.resultLagoaComprida
+write.table(as.matrix(comdist.resultLagoaComprida), file="comdist.resultLagoaComprida.txt")
+
+
+library(cluster)
+par(mfrow = c(1, 1))
+comdist.clustersLagoaComprida <- hclust(comdist.resultLagoaComprida)
+plot(comdist.clustersLagoaComprida)
+
 ```
 

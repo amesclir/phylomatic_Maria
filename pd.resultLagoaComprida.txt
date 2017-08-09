@@ -1,0 +1,5 @@
+"PD" "SR"
+"LagoaComprida1000" 4737.758966 48
+"LagoaComprida3000" 4339.142435 45
+"LagoaComprida6000" 2798.068793 27
+"LagoaComprida9000" 2047.690759 15

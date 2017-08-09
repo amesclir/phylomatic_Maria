@@ -1,0 +1,5 @@
+"PD" "SR"
+"IbondelasRanas1000" 914.308976 8
+"IbondelasRanas3000" 914.308976 8
+"IbondelasRanas6000" 979.834861 8
+"IbondelasRanas9000" 776.448814 6
